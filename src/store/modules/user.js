@@ -1,5 +1,5 @@
 import { getToken, setToken, removeToken } from '@/utils/auth'
-import { login } from '@/api/user '
+import { login } from '@/api/user'
 
 const state = {
   token: getToken() // 设置token初始状态
@@ -18,9 +18,7 @@ const mutations = {
 const actions = {
   async login (context, data) {
     const result = await login(data)
-    if (result.data.success) {
-      context.commit('setToken', result.data.data)
-    }
+    context.commit('setToken', result)
   }
 }
 export default {
