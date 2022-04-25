@@ -85,6 +85,7 @@
 // export default service
 import axios from 'axios'
 import { Message } from 'element-ui'
+import store from '@/store'
 
 // 创建axios实例
 const service = axios.create({
@@ -92,7 +93,14 @@ const service = axios.create({
   timeout: 5000
 })
 // 请求拦截器
-service.interceptors.request.use()
+service.interceptors.request.use(config => {
+  if (store.getters.token) {
+    config.headers['Authorization'] = `Bearer ${store.getters.token}`
+  }
+  return config
+}, error => {
+  return Promise.reject(error)
+})
 // 响应拦截器
 service.interceptors.response.use(
   response => {
