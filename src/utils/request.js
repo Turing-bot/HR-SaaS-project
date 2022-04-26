@@ -86,6 +86,9 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
 import store from '@/store'
+import router from '@/router'
+import { getTimeStamp } from '@/utils/auth'
+const TimeOut = 3600 // 定义超时时间
 
 // 创建axios实例
 const service = axios.create({
@@ -95,6 +98,11 @@ const service = axios.create({
 // 请求拦截器
 service.interceptors.request.use(config => {
   if (store.getters.token) {
+    if (IsCheckTimeOut()) {
+      store.dispatch('user/logout')
+      router.push('/login')
+      return Promise.reject(new Error('token超时了！'))
+    }
     config.headers['Authorization'] = `Bearer ${store.getters.token}`
   }
   return config
@@ -112,8 +120,19 @@ service.interceptors.response.use(
       return Promise.reject(new Error(message))
     }
   }, error => {
-    Message.error(error.message)
+    if (error.response && error.response.data && error.response.data.code === 10002) {
+      store.dispatch('user/logout')
+      router.push('/login')
+    } else {
+      Message.error(error.message)
+    }
     return Promise.reject(error)
   }
 )
+
+function IsCheckTimeOut () {
+  var currentTime = Date.now()
+  var timeStamp = getTimeStamp()
+  return (currentTime - timeStamp) / 1000 > TimeOut
+}
 export default service
