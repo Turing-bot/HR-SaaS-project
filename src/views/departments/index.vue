@@ -5,7 +5,7 @@
       <el-card class="tree-card">
         <!-- 用了一个行列布局 -->
         <!-- 缺少treeNode -->
-        <tree-tools :tree-node="company" :is-root="true" />
+        <tree-tools :tree-node="company" :is-root="true" @addDepts="addDepts" />
         <!--放置一个属性   这里的props和我们之前学习的父传子 的props没关系-->
         <el-tree :data="departs" :props="defaultProps" default-expand-all>
           <!-- 说明el-tree里面的这个内容 就是插槽内容 => 填坑内容  => 有多少个节点循环多少次 -->
@@ -15,10 +15,13 @@
             slot-scope="{ data }"
             :tree-node="data"
             @delDepts="getDepartments"
+            @addDepts="addDepts"
           />
         </el-tree>
       </el-card>
     </div>
+    //新增部门弹层组件
+    <add-dept :show-dialog="showDialog" />
   </div>
 </template>
 
@@ -26,9 +29,12 @@
 import TreeTools from './components/tree-tools'
 import { getDepartments } from '@/api/departments'
 import { tranListToTreeData } from '@/utils'
+import AddDept from './components/add-dept.vue'
+
 export default {
   components: {
-    TreeTools
+    TreeTools,
+    AddDept
   },
   data () {
     return {
@@ -36,7 +42,8 @@ export default {
       departs: [],
       defaultProps: {
         label: 'name' // 表示 从这个属性显示内容
-      }
+      },
+      showDialog: false
     }
   },
   created () {
@@ -48,6 +55,10 @@ export default {
       this.company = { name: result.companyName, manager: '负责人' }
       // 这里定义一个空串  因为 它是根 所有的子节点的数据pid 都是 ""
       this.departs = tranListToTreeData(result.depts, '')
+    },
+    addDepts (node) {
+      this.showDialog = true
+      this.node = node
     }
   }
 }
