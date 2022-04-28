@@ -16,12 +16,18 @@
             :tree-node="data"
             @delDepts="getDepartments"
             @addDepts="addDepts"
+            @editDepts="editDepts"
           />
         </el-tree>
       </el-card>
     </div>
     <!-- 新增部门弹层组件 -->
-    <add-dept :show-dialog="showDialog" :tree-node="node" />
+    <add-dept
+      ref="addDept"
+      :show-dialog.sync="showDialog"
+      :tree-node="node"
+      @addDepts="getDepartments"
+    />
   </div>
 </template>
 
@@ -59,6 +65,11 @@ export default {
     addDepts (node) {
       this.showDialog = true
       this.node = node
+    },
+    editDepts (node) {
+      this.showDialog = true
+      this.node = node
+      this.$refs.AddDept.getDepartDetail(node.id)
     }
   }
 }
