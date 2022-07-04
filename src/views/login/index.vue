@@ -9,7 +9,9 @@
       label-position="left"
     >
       <div class="title-container">
-        <h3 class="title">Login Form</h3>
+        <h3 class="title">
+          <img src="@/assets/common/login-logo.png" />
+        </h3>
       </div>
 
       <el-form-item prop="username">
@@ -53,13 +55,14 @@
         :loading="loading"
         type="primary"
         style="width: 100%; margin-bottom: 30px"
+        class="loginBtn"
         @click.native.prevent="handleLogin"
-        >Login</el-button
+        >登录</el-button
       >
 
       <div class="tips">
-        <span style="margin-right: 20px">username: admin</span>
-        <span> password: any</span>
+        <span style="margin-right: 20px">username: 13800000002</span>
+        <span> password: 123456</span>
       </div>
     </el-form>
   </div>
@@ -143,7 +146,7 @@ export default {
 /* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */
 
 $bg: #283443;
-$light_gray: #fff;
+$light_gray: #68b0fe;
 $cursor: #fff;
 
 @supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
@@ -154,6 +157,9 @@ $cursor: #fff;
 
 /* reset element-ui css */
 .login-container {
+  background-image: url('~@/assets/common/login.jpg');
+  background-position: center;
+
   .el-input {
     display: inline-block;
     height: 47px;
@@ -178,7 +184,7 @@ $cursor: #fff;
 
   .el-form-item {
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 5px;
     color: #454545;
   }
@@ -203,6 +209,13 @@ $light_gray: #eee;
     padding: 160px 35px 0;
     margin: 0 auto;
     overflow: hidden;
+
+    .loginBtn {
+      background: #407ffe;
+      height: 64px;
+      line-height: 32px;
+      font-size: 24px;
+    }
   }
 
   .tips {
