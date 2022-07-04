@@ -57,8 +57,9 @@
         style="width: 100%; margin-bottom: 30px"
         class="loginBtn"
         @click.native.prevent="handleLogin"
-        >登录</el-button
       >
+        登录
+      </el-button>
 
       <div class="tips">
         <span style="margin-right: 20px">mobile: 13800000002</span>
@@ -70,6 +71,7 @@
 
 <script>
 import { validMobile } from '@/utils/validate'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Login',
@@ -110,6 +112,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['user/login']),
     showPwd () {
       if (this.passwordType === 'password') {
         this.passwordType = ''
@@ -121,19 +124,17 @@ export default {
       })
     },
     handleLogin () {
-      this.$refs.loginForm.validate(valid => {
-        if (valid) {
-          this.loading = true
-          this.$store.dispatch('user/login', this.loginForm).then(() => {
-            this.$router.push({ path: this.redirect || '/' })
-            this.loading = false
-          }).catch(() => {
-            this.loading = false
-          })
-        } else {
-          console.log('error submit!!')
-          return false
+      this.$refs.loginForm.validate(async isOk => {
+        if (isOk) {
+          try {
+            this.loading = true
+            await this['user/login'](this.loginForm)
+            this.$router.push('/')
+          } catch (err) {
+            console.log(err)
+          }
         }
+        this.loading = false
       })
     }
   }
