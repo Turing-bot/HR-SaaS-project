@@ -35,9 +35,17 @@ module.exports = {
     overlay: {
       warnings: false,
       errors: true
-    }
+    },
     // before: require('./mock/mock-server.js')
+    // 代理配置
+    proxy: {
+      '/api': {
+        target: 'http://ihrm.itheima.net/',
+        changeOrigin: true
+      }
+    }
   },
+
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
