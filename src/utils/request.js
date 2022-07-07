@@ -16,6 +16,7 @@ service.interceptors.response.use(response => {
   if (success) {
     return data
   } else {
+    Message.error(message)
     return Promise.reject(new Error(message))
   }
 }, error => {

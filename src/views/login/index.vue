@@ -61,10 +61,10 @@
         登录
       </el-button>
 
-      <div class="tips">
+      <!-- <div class="tips">
         <span style="margin-right: 20px">mobile: 13800000002</span>
         <span> password: 123456</span>
-      </div>
+      </div> -->
     </el-form>
   </div>
 </template>
@@ -133,8 +133,8 @@ export default {
           } catch (err) {
             console.log(err)
           }
+          this.loading = false
         }
-        this.loading = false
       })
     }
   }
