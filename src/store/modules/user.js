@@ -1,5 +1,5 @@
 import { getToken, setToken, removeToken } from '@/utils/auth'
-import { login, getUserInfo } from '@/api/user'
+import { login, getUserInfo, getUserById } from '@/api/user'
 
 // 状态
 const state = {
@@ -31,8 +31,10 @@ const actions = {
   },
   async getUserInfo (context) {
     const result = await getUserInfo()
-    context.commit('setUserInfo', result)
-    return result
+    const baseInfo = await getUserById(result.userId)
+    const baseResult = { ...result, ...baseInfo }
+    context.commit('setUserInfo', baseResult)
+    return baseResult
   }
 }
 
