@@ -1,6 +1,10 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
 import store from '@/store'
+// import router from '@/router'
+// import { getTimeStamp } from '@/utils/auth'
+
+// const TimeOut = 3600
 
 // 创建一个axios的实例
 const service = axios.create({
