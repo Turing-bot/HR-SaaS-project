@@ -13,7 +13,7 @@ const mutations = {
     setToken(token)
   },
   removeToken (state) {
-    state.Token = null
+    state.token = null
     removeToken()
   },
   setUserInfo (state, result) {
