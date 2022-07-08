@@ -1,12 +1,12 @@
 import Layout from '@/layout'
 
 export default {
-  path: '/salarys',
-  name: 'salarys',
+  path: '/salary',
+  name: 'salary',
   component: Layout,
   children: [{
     path: '',
-    component: () => import('@/views/salarys'),
+    component: () => import('@/views/salary'),
 
     meta: {
       title: '工资'
