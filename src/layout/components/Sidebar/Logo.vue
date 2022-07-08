@@ -33,8 +33,8 @@ export default {
   },
   data () {
     return {
-      title: 'Vue Admin Template',
-      logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
+      title: 'HR-SaaS-project',
+      logo: 'https://img.icons8.com/color/480/000000/github-2.png'
     }
   }
 }

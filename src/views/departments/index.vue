@@ -11,7 +11,7 @@
         <el-tree
           :data="departs"
           :props="defaultProps"
-          :default-expand-all="true"
+          :default-expand-all="false"
         >
           <TreeTools slot-scope="{ data }" :tree-node="data" />
         </el-tree>
@@ -22,6 +22,8 @@
 
 <script>
 import TreeTools from './components/tree-tools.vue'
+import { getDepartmentsData } from '@/api/departments'
+import { convertTreeData } from '@/utils'
 
 export default {
   name: 'Departments',
@@ -30,19 +32,21 @@ export default {
   },
   data () {
     return {
+      departs: [],
+      company: {},
       defaultProps: {
         label: 'name'
-      },
-      departs: [{
-        name: '总裁办',
-        manager: '曹操',
-        children: [
-          { name: '董事会', manager: '张三' }
-        ]
-      },
-      { name: '行政部', manager: '李四' },
-      { name: '人事部', manager: '王五' }],
-      company: { name: '公司集团组织架构', manager: '负责人' }
+      }
+    }
+  },
+  created () {
+    this.getDepartments()
+  },
+  methods: {
+    async getDepartments () {
+      const result = await getDepartmentsData()
+      this.company = { name: result.companyName, manager: '负责人' }
+      this.departs = convertTreeData(result.depts, '')
     }
   }
 }

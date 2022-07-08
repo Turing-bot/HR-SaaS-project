@@ -115,3 +115,18 @@ export function param2Obj (url) {
   })
   return obj
 }
+
+// 转化树形结构
+export function convertTreeData (list, rootValue) {
+  var arr = []
+  list.forEach(item => {
+    if (item.pid === rootValue) {
+      const children = convertTreeData(list, item.id)
+      if (children.length) {
+        item.children = children
+      }
+      arr.push(item)
+    }
+  })
+  return arr
+}
