@@ -22,7 +22,11 @@
         </el-tree>
       </el-card>
     </div>
-    <AddDepts :show-dialog="showDialog" :tree-node="node" />
+    <AddDepts
+      :show-dialog.sync="showDialog"
+      :tree-node="node"
+      @addDepts="getDepartments"
+    />
   </div>
 </template>
 
