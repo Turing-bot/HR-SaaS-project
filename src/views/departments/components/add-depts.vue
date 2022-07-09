@@ -23,7 +23,15 @@
           v-model="formData.manager"
           style="width: 80%"
           placeholder="请选择"
-        />
+          @focus="getEmployeeSimple"
+        >
+          <el-option
+            v-for="item in peoples"
+            :key="item.id"
+            :label="item.username"
+            :value="item.username"
+          />
+        </el-select>
       </el-form-item>
       <el-form-item label="部门介绍" prop="introduce">
         <el-input
@@ -48,6 +56,8 @@
 
 <script>
 import { getDepartmentsData } from '@/api/departments'
+import { getEmployeeSimple } from '@/api/employees'
+
 export default {
   name: 'AddDepts',
   props: {
@@ -72,6 +82,7 @@ export default {
       isRepeat ? callback(new Error('已存在相同部门编码')) : callback()
     }
     return {
+      peoples: [],
       formData: {
         name: '',
         code: '',
@@ -94,6 +105,11 @@ export default {
           min: 1, max: 300, message: '部门介绍内容长度为1-300个字符', trigger: 'blur'
         }]
       }
+    }
+  },
+  methods: {
+    async getEmployeeSimple () {
+      this.peoples = await getEmployeeSimple()
     }
   }
 }
