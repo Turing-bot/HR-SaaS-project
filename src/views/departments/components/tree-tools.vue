@@ -18,11 +18,11 @@
               <i class="el-icon-arrow-down" />
             </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item @command="add"> 添加子部门 </el-dropdown-item>
-              <el-dropdown-item v-if="!isRoot" @command="edit">
+              <el-dropdown-item command="add"> 添加子部门 </el-dropdown-item>
+              <el-dropdown-item v-if="!isRoot" command="edit">
                 编辑部门
               </el-dropdown-item>
-              <el-dropdown-item v-if="!isRoot" @command="del">
+              <el-dropdown-item v-if="!isRoot" command="del">
                 删除部门
               </el-dropdown-item>
             </el-dropdown-menu>
@@ -51,7 +51,7 @@ export default {
   methods: {
     operateDepts (type) {
       if (type === 'add') {
-        alert('123')
+        this.$emit('addDepts', this.treeNode)
       } else if (type === 'edit') {
         alert('456')
       } else {

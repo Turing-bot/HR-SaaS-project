@@ -6,6 +6,7 @@
           :tree-node="company"
           style="border-bottom: 1px solid #ccc"
           :is-root="true"
+          @addDepts="addDepts"
         />
         <el-tree
           :data="departs"
@@ -16,22 +17,26 @@
             slot-scope="{ data }"
             :tree-node="data"
             @delDepts="getDepartments"
+            @addDepts="addDepts"
           />
         </el-tree>
       </el-card>
     </div>
+    <AddDepts :show-dialog="showDialog" />
   </div>
 </template>
 
 <script>
-import TreeTools from './components/tree-tools.vue'
 import { getDepartmentsData } from '@/api/departments'
 import { convertTreeData } from '@/utils'
+import TreeTools from './components/tree-tools.vue'
+import AddDepts from './components/add-depts.vue'
 
 export default {
   name: 'Departments',
   components: {
-    TreeTools
+    TreeTools,
+    AddDepts
   },
   data () {
     return {
@@ -39,7 +44,9 @@ export default {
       company: {},
       defaultProps: {
         label: 'name'
-      }
+      },
+      showDialog: false,
+      node: null
     }
   },
   created () {
@@ -50,6 +57,10 @@ export default {
       const result = await getDepartmentsData()
       this.company = { name: result.companyName, manager: '负责人' }
       this.departs = convertTreeData(result.depts, '')
+    },
+    addDepts (node) {
+      this.showDialog = true
+      this.node = node
     }
   }
 }
