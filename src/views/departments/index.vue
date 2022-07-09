@@ -55,7 +55,7 @@ export default {
   methods: {
     async getDepartments () {
       const result = await getDepartmentsData()
-      this.company = { name: result.companyName, manager: '负责人' }
+      this.company = { name: result.companyName, manager: '负责人', id: '' }
       this.departs = convertTreeData(result.depts, '')
     },
     addDepts (node) {

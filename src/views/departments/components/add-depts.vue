@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import { getDepartmentsData } from '@/api/departments'
 export default {
   name: 'AddDepts',
   props: {
@@ -60,6 +61,16 @@ export default {
     }
   },
   data () {
+    const checkNameRepeat = async (rule, value, callback) => {
+      const { depts } = await getDepartmentsData()
+      const isRepeat = depts.filter(item => item.pid === this.treeNode.id).some(item => item.name === value)
+      isRepeat ? callback(new Error('已存在相同名称部门')) : callback()
+    }
+    const checkCodeRepeat = async (rule, value, callback) => {
+      const { depts } = await getDepartmentsData()
+      const isRepeat = depts.some(item => item.code === value && value)
+      isRepeat ? callback(new Error('已存在相同部门编码')) : callback()
+    }
     return {
       formData: {
         name: '',
@@ -70,9 +81,13 @@ export default {
       rules: {
         name: [{ required: true, message: '部门名称不能为空！', trigger: 'blur' }, {
           min: 1, max: 50, message: '部门名称长度为1-50个字符', trigger: 'blur'
+        }, {
+          trigger: 'blur', validator: checkNameRepeat
         }],
         code: [{ required: true, message: '部门编码不能为空！', trigger: 'blur' }, {
           min: 1, max: 50, message: '部门编码长度为1-50个字符', trigger: 'blur'
+        }, {
+          trigger: 'blur', validator: checkCodeRepeat
         }],
         manager: [{ required: true, message: '部门负责人不能为空！', trigger: 'blur' }],
         introduce: [{ required: true, message: '部门介绍不能为空！', trigger: 'blur' }, {
