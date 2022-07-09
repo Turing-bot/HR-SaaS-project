@@ -7,13 +7,16 @@
           style="border-bottom: 1px solid #ccc"
           :is-root="true"
         />
-
         <el-tree
           :data="departs"
           :props="defaultProps"
           :default-expand-all="false"
         >
-          <TreeTools slot-scope="{ data }" :tree-node="data" />
+          <TreeTools
+            slot-scope="{ data }"
+            :tree-node="data"
+            @delDepts="getDepartments"
+          />
         </el-tree>
       </el-card>
     </div>
