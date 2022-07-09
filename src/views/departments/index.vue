@@ -22,7 +22,7 @@
         </el-tree>
       </el-card>
     </div>
-    <AddDepts :show-dialog="showDialog" />
+    <AddDepts :show-dialog="showDialog" :tree-node="node" />
   </div>
 </template>
 
