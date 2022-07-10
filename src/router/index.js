@@ -75,7 +75,7 @@ export const dynamicRoutes = [
   socialRouter,
   departmentsRouter,
   permissionRouter,
-  settingRouter,
+  settingRouter
 ]
 
 const createRouter = () => new Router({

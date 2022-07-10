@@ -1,6 +1,6 @@
 <template>
   <!-- 新增部门的弹层 -->
-  <el-dialog title="新增部门" :visible="showDialog" @close="btnCancel">
+  <el-dialog :title="showTitle" :visible="showDialog" @close="btnCancel">
     <!-- 表单组件  el-form   label-width设置label的宽度   -->
     <!-- 匿名插槽 -->
     <el-form
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import { addDepartments, getDepartmentsData } from '@/api/departments'
+import { addDepartments, getDepartmentsData, getDepartDetail } from '@/api/departments'
 import { getEmployeeSimple } from '@/api/employees'
 
 export default {
@@ -112,6 +112,11 @@ export default {
       }
     }
   },
+  computed: {
+    showTitle () {
+      return this.formData.id ? '编辑部门' : '新增子部门'
+    }
+  },
   methods: {
     async getEmployeeSimple () {
       this.peoples = await getEmployeeSimple()
@@ -127,8 +132,17 @@ export default {
       })
     },
     btnCancel () {
+      this.formData = {
+        name: '',
+        code: '',
+        manager: '',
+        introduce: ''
+      }
       this.$refs.deptForm.resetFields()
       this.$emit('update:showDialog', false)
+    },
+    async getDepartDetail (id) {
+      this.formData = await getDepartDetail(id)
     }
   }
 }

@@ -16,13 +16,15 @@
           <TreeTools
             slot-scope="{ data }"
             :tree-node="data"
-            @delDepts="getDepartments"
             @addDepts="addDepts"
+            @editDepts="editDepts"
+            @delDepts="getDepartments"
           />
         </el-tree>
       </el-card>
     </div>
     <AddDepts
+      ref="addDept"
       :show-dialog.sync="showDialog"
       :tree-node="node"
       @addDepts="getDepartments"
@@ -65,6 +67,11 @@ export default {
     addDepts (node) {
       this.showDialog = true
       this.node = node
+    },
+    editDepts (node) {
+      this.showDialog = true
+      this.node = node
+      this.$refs.addDept.getDepartDetail(node.id)
     }
   }
 }

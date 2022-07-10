@@ -53,7 +53,7 @@ export default {
       if (type === 'add') {
         this.$emit('addDepts', this.treeNode)
       } else if (type === 'edit') {
-        alert('456')
+        this.$emit('editDepts', this.treeNode)
       } else {
         this.$confirm('确认删除该部门吗').then(() => {
           return delDepartments(this.treeNode.id)
