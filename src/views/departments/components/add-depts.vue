@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import { addDepartments, getDepartmentsData, getDepartDetail } from '@/api/departments'
+import { addDepartments, getDepartmentsData, getDepartDetail, editDepartments } from '@/api/departments'
 import { getEmployeeSimple } from '@/api/employees'
 
 export default {
@@ -78,12 +78,24 @@ export default {
   data () {
     const checkNameRepeat = async (rule, value, callback) => {
       const { depts } = await getDepartmentsData()
-      const isRepeat = depts.filter(item => item.pid === this.treeNode.id).some(item => item.name === value)
+      let isRepeat = false
+      if (this.formData.id) {
+        isRepeat = depts.filter(item => item.id === this.treeNode.id &&
+          item.pid === this.treeNode.pid).some(item => item.name === value)
+      } else {
+        isRepeat = depts.filter(item => item.pid ===
+          this.treeNode.id).some(item => item.name === value)
+      }
       isRepeat ? callback(new Error('已存在相同名称部门')) : callback()
     }
     const checkCodeRepeat = async (rule, value, callback) => {
       const { depts } = await getDepartmentsData()
-      const isRepeat = depts.some(item => item.code === value && value)
+      let isRepeat = false
+      if (this.formData.id) {
+        isRepeat = depts.some(item => item.id !== this.treeNode.id && item.code === value && value)
+      } else {
+        isRepeat = depts.some(item => item.code === value && value)
+      }
       isRepeat ? callback(new Error('已存在相同部门编码')) : callback()
     }
     return {
@@ -124,7 +136,11 @@ export default {
     btnOk () {
       this.$refs.deptForm.validate(async isOk => {
         if (isOk) {
-          await addDepartments({ ...this.formData, pid: this.treeNode.id })
+          if (this.formData.id) {
+            await editDepartments(this.formData)
+          } else {
+            await addDepartments({ ...this.formData, pid: this.treeNode.id })
+          }
           this.$emit('addDepts')
           this.$emit('update:showDialog', false)
           this.$message.success('添加部门成功！')
