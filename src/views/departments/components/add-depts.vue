@@ -80,7 +80,7 @@ export default {
       const { depts } = await getDepartmentsData()
       let isRepeat = false
       if (this.formData.id) {
-        isRepeat = depts.filter(item => item.id === this.treeNode.id &&
+        isRepeat = depts.filter(item => item.id !== this.treeNode.id &&
           item.pid === this.treeNode.pid).some(item => item.name === value)
       } else {
         isRepeat = depts.filter(item => item.pid ===
@@ -138,12 +138,13 @@ export default {
         if (isOk) {
           if (this.formData.id) {
             await editDepartments(this.formData)
+            this.$message.success('编辑部门成功！')
           } else {
             await addDepartments({ ...this.formData, pid: this.treeNode.id })
+            this.$message.success('添加部门成功！')
           }
           this.$emit('addDepts')
           this.$emit('update:showDialog', false)
-          this.$message.success('添加部门成功！')
         }
       })
     },
