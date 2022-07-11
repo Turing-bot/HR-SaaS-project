@@ -7,7 +7,11 @@
           <el-tab-pane label="角色管理">
             <!-- 新增角色按钮 -->
             <el-row style="height: 60px">
-              <el-button icon="el-icon-plus" size="small" type="primary"
+              <el-button
+                icon="el-icon-plus"
+                size="small"
+                type="primary"
+                @click="showDialog = true"
                 >新增角色</el-button
               >
             </el-row>
@@ -116,8 +120,8 @@
     </div>
     <el-dialog
       :visible.sync="showDialog"
-      title="编辑信息"
-      @click="showDialog = false"
+      :title="dialogTitle"
+      @click="btnCancel"
     >
       <el-form
         ref="roleForm"
@@ -134,7 +138,7 @@
       </el-form>
       <el-row slot="footer" type="flex" justify="center">
         <el-col :span="6">
-          <el-button size="small" @click="showDialog = false">取消</el-button>
+          <el-button size="small" @click="btnCancel">取消</el-button>
           <el-button size="small" type="primary" @click="btnOK">确认</el-button>
         </el-col>
       </el-row>
@@ -143,7 +147,7 @@
 </template>
 
 <script>
-import { getRoleInfo, getCompanyInfo, deleteRole, getRoleDetail, editRoleInfo } from '@/api/setting'
+import { getRoleInfo, getCompanyInfo, deleteRole, getRoleDetail, editRoleInfo, addRole } from '@/api/setting'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -165,7 +169,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['companyId'])
+    ...mapGetters(['companyId']),
+    dialogTitle () {
+      return this.roleForm.id ? '编辑信息' : '新增角色'
+    }
   },
   created () {
     this.getRoleInfo()
@@ -207,15 +214,32 @@ export default {
         await this.$refs.roleForm.validate()
         if (this.roleForm.id) {
           await editRoleInfo(this.roleForm)
+          this.$message.success('编辑信息成功')
+          this.roleForm = {
+            name: '',
+            description: ''
+          }
         } else {
-          console.log('新增')
+          await addRole(this.roleForm)
+          this.$message.success('新增角色成功')
+          this.roleForm = {
+            name: '',
+            description: ''
+          }
         }
         this.getRoleInfo()
-        this.$message.success('编辑信息成功')
         this.showDialog = false
       } catch (err) {
         this.getRoleInfo()
       }
+    },
+    btnCancel () {
+      this.roleForm = {
+        name: '',
+        description: ''
+      }
+      this.$refs.roleForm.resetFields()
+      this.showDialog = false
     }
   }
 

@@ -34,10 +34,19 @@ export function editRoleInfo (data) {
   })
 }
 
-// 获取角色信息
+// 获取角色详细信息
 export function getRoleDetail (id) {
   return request({
     method: 'GET',
     url: `/sys/role/${id}`
+  })
+}
+
+// 新增角色
+export function addRole (data) {
+  return request({
+    method: 'POST',
+    url: '/sys/role',
+    data
   })
 }
