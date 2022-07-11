@@ -4,7 +4,7 @@ import store from '@/store'
 import router from '@/router'
 import { getTimeStamp } from '@/utils/auth'
 
-const TimeOut = 3600
+const TimeOut = 86400
 
 // 创建一个axios的实例
 const service = axios.create({

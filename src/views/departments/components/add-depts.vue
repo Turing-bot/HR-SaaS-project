@@ -92,7 +92,8 @@ export default {
       const { depts } = await getDepartmentsData()
       let isRepeat = false
       if (this.formData.id) {
-        isRepeat = depts.some(item => item.id !== this.treeNode.id && item.code === value && value)
+        isRepeat = depts.filter(item => item.id !== this.treeNode.id)
+          .some(item => item.id !== this.treeNode.id && item.code === value && value)
       } else {
         isRepeat = depts.some(item => item.code === value && value)
       }

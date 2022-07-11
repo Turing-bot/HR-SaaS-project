@@ -16,3 +16,28 @@ export function getCompanyInfo (companyId) {
     url: `/company/${companyId}`
   })
 }
+
+// 删除角色
+export function deleteUser (id) {
+  return request({
+    method: 'DELETE',
+    url: `/sys/role/${id}`
+  })
+}
+
+// 编辑角色信息
+export function editUserInfo (data) {
+  return request({
+    method: 'PUT',
+    url: `/sys/role/${data.id}`,
+    data
+  })
+}
+
+// 获取角色信息
+export function getUserInfo (id) {
+  return request({
+    method: 'GET',
+    url: `/sys/role/${id}`
+  })
+}

@@ -12,7 +12,11 @@
               >
             </el-row>
             <!-- 表格 -->
-            <el-table border="" :data="list">
+            <el-table
+              border=""
+              :data="list"
+              :default-sort="{ prop: 'name', order: 'descending' }"
+            >
               <el-table-column
                 align="center"
                 label="序号"
@@ -24,12 +28,25 @@
                 label="角色名称"
                 prop="name"
                 width="240"
+                sortable
               />
-              <el-table-column align="center" label="描述" prop="description" />
+              <el-table-column
+                align="center"
+                label="描述"
+                prop="description"
+                sortable
+              />
               <el-table-column align="center" label="操作">
-                <el-button size="small" type="success">分配权限</el-button>
-                <el-button size="small" type="primary">编辑</el-button>
-                <el-button size="small" type="danger">删除</el-button>
+                <template slot-scope="{ row }">
+                  <el-button size="small" type="success">分配权限</el-button>
+                  <el-button size="small" type="primary">编辑</el-button>
+                  <el-button
+                    size="small"
+                    type="danger"
+                    @click="deleteUser(row.id)"
+                    >删除</el-button
+                  >
+                </template>
               </el-table-column>
             </el-table>
             <!-- 分页组件 -->
@@ -96,7 +113,7 @@
 </template>
 
 <script>
-import { getRoleInfo, getCompanyInfo } from '@/api/setting'
+import { getRoleInfo, getCompanyInfo, deleteUser, getUserInfo } from '@/api/setting'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -126,11 +143,25 @@ export default {
       this.list = rows
     },
     changePage (newPage) {
-      this.page.page
+      this.page.page = newPage
       this.getRoleInfo()
     },
     async getCompanyInfo () {
       this.companyInfo = await getCompanyInfo()
+    },
+    async deleteUser (id) {
+      try {
+        await this.$confirm('确认删除该角色吗？')
+        await deleteUser(id)
+        this.getRoleInfo()
+        this.$message.success('删除角色成功')
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    async getUserInfo (id) {
+      const result = await getUserInfo(id)
+      console.log(result)
     }
   }
 
