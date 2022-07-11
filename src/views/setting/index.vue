@@ -215,17 +215,13 @@ export default {
         if (this.roleForm.id) {
           await editRoleInfo(this.roleForm)
           this.$message.success('编辑信息成功')
-          this.roleForm = {
-            name: '',
-            description: ''
-          }
         } else {
           await addRole(this.roleForm)
           this.$message.success('新增角色成功')
-          this.roleForm = {
-            name: '',
-            description: ''
-          }
+        }
+        this.roleForm = {
+          name: '',
+          description: ''
         }
         this.getRoleInfo()
         this.showDialog = false
