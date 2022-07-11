@@ -18,7 +18,7 @@ export function getCompanyInfo (companyId) {
 }
 
 // 删除角色
-export function deleteUser (id) {
+export function deleteRole (id) {
   return request({
     method: 'DELETE',
     url: `/sys/role/${id}`
@@ -26,7 +26,7 @@ export function deleteUser (id) {
 }
 
 // 编辑角色信息
-export function editUserInfo (data) {
+export function editRoleInfo (data) {
   return request({
     method: 'PUT',
     url: `/sys/role/${data.id}`,
@@ -35,7 +35,7 @@ export function editUserInfo (data) {
 }
 
 // 获取角色信息
-export function getUserInfo (id) {
+export function getRoleDetail (id) {
   return request({
     method: 'GET',
     url: `/sys/role/${id}`
