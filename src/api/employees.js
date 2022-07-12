@@ -24,3 +24,12 @@ export function deleteRole (id) {
     url: `/sys/user/${id}`
   })
 }
+
+// 新增员工
+export function addRole (data) {
+  return request({
+    method: 'POST',
+    url: '/sys/user',
+    data
+  })
+}
