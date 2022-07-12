@@ -12,8 +12,8 @@
         </template>
       </page-tools>
       <!-- 放置表格和分页 -->
-      <el-card v-loading="loading">
-        <el-table border :data="list">
+      <el-card>
+        <el-table v-loading="loading" border :data="list">
           <el-table-column
             align="center"
             label="序号"
