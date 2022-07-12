@@ -1,8 +1,9 @@
-import PageTools from './PageTools/index.vue'
+import PageTools from './PageTools'
+import UploadExcel from './UploadExcel'
 
-// 注册全局通用的通用栏组件对象
 export default {
   install (Vue) {
-    Vue.component('PageTools', PageTools)
+    Vue.component('PageTools', PageTools) // 注册工具栏组件
+    Vue.component('UploadExcel', UploadExcel) // 注册导入excel组件
   }
 }
