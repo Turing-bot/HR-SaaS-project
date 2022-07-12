@@ -238,7 +238,6 @@ export default {
       this.showDialog = false
     }
   }
-
 }
 </script>
 
