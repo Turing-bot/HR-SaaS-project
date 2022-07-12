@@ -2,7 +2,7 @@
   <div class="dashboard-container">
     <div class="app-container">
       <page-tools :show-before="true">
-        <span slot="before">共{{ this.list.length }}条记录</span>
+        <span slot="before">共{{ this.page.total }}条记录</span>
         <template #after>
           <el-button size="small" type="warning">导入</el-button>
           <el-button size="small" type="danger">导出</el-button>
@@ -69,13 +69,15 @@
             fixed="right"
             width="280"
           >
-            <template>
+            <template slot-scope="{ row }">
               <el-button type="text" size="small">查看</el-button>
               <el-button type="text" size="small">转正</el-button>
               <el-button type="text" size="small">调岗</el-button>
               <el-button type="text" size="small">离职</el-button>
               <el-button type="text" size="small">角色</el-button>
-              <el-button type="text" size="small">删除</el-button>
+              <el-button type="text" size="small" @click="deleteRole(row.id)"
+                >删除</el-button
+              >
             </template>
           </el-table-column>
         </el-table>
@@ -100,7 +102,7 @@
 </template>
 
 <script>
-import { getEmployeeList } from '@/api/employees'
+import { getEmployeeList, deleteRole } from '@/api/employees'
 import EmployeeEnum from '@/api/constant/employees'
 
 export default {
@@ -134,9 +136,18 @@ export default {
     formatEmployment (row, column, cellValue, index) {
       const obj = EmployeeEnum.hireType.find(item => item.id === cellValue)
       return obj ? obj.value : '未知'
+    },
+    async deleteRole (id) {
+      try {
+        await this.$confirm('确认删除该员工信息吗？')
+        await deleteRole(id)
+        this.getEmployeeList()
+        this.$message.success('删除员工信息成功')
+      } catch (err) {
+        console.log(err)
+      }
     }
   }
-
 }
 </script>
 
