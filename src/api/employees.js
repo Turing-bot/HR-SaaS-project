@@ -9,9 +9,10 @@ export function getEmployeeSimple () {
 }
 
 // 获取员工详细信息
-export function getEmployeeList () {
+export function getEmployeeList (params) {
   return request({
     method: 'GET',
-    url: '/sys/user'
+    url: '/sys/user',
+    params
   })
 }
