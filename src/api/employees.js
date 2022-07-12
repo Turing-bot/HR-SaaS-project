@@ -7,3 +7,11 @@ export function getEmployeeSimple () {
     url: '/sys/user/simple'
   })
 }
+
+// 获取员工详细信息
+export function getEmployeeList () {
+  return request({
+    method: 'GET',
+    url: '/sys/user'
+  })
+}
