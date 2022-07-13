@@ -118,11 +118,7 @@
         </el-tabs>
       </el-card>
     </div>
-    <el-dialog
-      :visible.sync="showDialog"
-      :title="dialogTitle"
-      @click="btnCancel"
-    >
+    <el-dialog :visible="showDialog" :title="dialogTitle" @close="btnCancel">
       <el-form
         ref="roleForm"
         label-width="120px"
