@@ -33,3 +33,12 @@ export function addRole (data) {
     data
   })
 }
+
+// 导入员工
+export function importRole (data) {
+  return request({
+    method: 'POST',
+    url: '/sys/user/batch',
+    data
+  })
+}

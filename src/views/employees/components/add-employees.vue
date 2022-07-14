@@ -121,7 +121,7 @@ export default {
         mobile: [{ required: true, message: '手机号不能为空', trigger: 'blur' }, {
           pattern: /^1[3,5,8,9]\d{9}$/, message: '手机号格式不正确', trigger: 'blur'
         }],
-        formOfEmployment: [{ required: true, message: '聘用形式不能为空', trigger: 'blur' }],
+        formOfEmployment: [{ required: true, message: '聘用形式不能为空', trigger: 'change' }],
         workNumber: [{ required: true, message: '工号不能为空', trigger: 'blur' }],
         departmentName: [{ required: true, message: '部门不能为空', trigger: 'change' }],
         timeOfEntry: [{ required: true, message: '入职时间', trigger: 'blur' }]
@@ -147,15 +147,6 @@ export default {
         this.$parent.getEmployeeList && this.$parent.getEmployeeList()
         this.$refs.addEmployees.resetFields()
         this.$parent.showDialog = false
-        this.formData = {
-          username: '',
-          mobile: '',
-          formOfEmployment: '',
-          workNumber: '',
-          departmentName: '',
-          timeOfEntry: '',
-          correctionTime: ''
-        }
       } catch (err) {
         console.log(err)
       }
