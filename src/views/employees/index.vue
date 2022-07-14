@@ -10,7 +10,9 @@
             @click="$router.push('/import')"
             >导入</el-button
           >
-          <el-button size="small" type="danger">导出</el-button>
+          <el-button size="small" type="danger" @click="exportData"
+            >导出</el-button
+          >
           <el-button size="small" type="primary" @click="showDialog = true"
             >新增员工</el-button
           >
@@ -113,6 +115,7 @@
 import AddEmployees from './components/add-employees.vue'
 import { getEmployeeList, deleteRole } from '@/api/employees'
 import EmployeeEnum from '@/api/constant/employees'
+import { formatDate } from '@/filters'
 
 export default {
   name: 'Employees',
@@ -159,6 +162,48 @@ export default {
       } catch (err) {
         console.log(err)
       }
+    },
+    // 导出excel数据
+    exportData () {
+      const headers = {
+        '姓名': 'username',
+        '手机号': 'mobile',
+        '入职日期': 'timeOfEntry',
+        '聘用形式': 'formOfEmployment',
+        '转正日期': 'correctionTime',
+        '工号': 'workNumber',
+        '部门': 'departmentName'
+      }
+      // 懒加载
+      import('@/vendor/Export2Excel').then(async excel => {
+        await this.$confirm('确认导出员工信息吗？')
+        const { rows } = await getEmployeeList({ page: 1, size: this.page.total })
+        const data = this.formatJson(headers, rows) // 返回的data就是要导出的结构
+        const multiHeader = [['姓名', '主要信息', '', '', '', '', '部门']]
+        const merges = ['A1:A2', 'B1:F1', 'G1:G2']
+        excel.export_json_to_excel({
+          header: Object.keys(headers),
+          data,
+          filename: '员工资料表',
+          multiHeader, // 复杂表头
+          merges // 合并选项
+        })
+      })
+    },
+    // 该方法负责将数组转化成二维数组
+    formatJson (headers, rows) {
+      return rows.map(item => {
+        return Object.keys(headers).map(key => {
+          if (headers[key] === 'timeOfEntry' || headers[key] === 'correctionTime') {
+            // 格式化日期
+            return formatDate(item[headers[key]])
+          } else if (headers[key] === 'formOfEmployment') {
+            const obj = EmployeeEnum.hireType.find(obj => obj.id === item[headers[key]])
+            return obj ? obj.value : '未知'
+          }
+          return item[headers[key]]
+        })
+      })
     }
   }
 }
