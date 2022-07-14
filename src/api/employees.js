@@ -42,3 +42,12 @@ export function importRole (data) {
     data
   })
 }
+
+// 保存员工基本信息
+export function saveRoleInfo (data) {
+  return request({
+    method: 'PUT',
+    url: `/sys/user/${data.id}`,
+    data
+  })
+}
