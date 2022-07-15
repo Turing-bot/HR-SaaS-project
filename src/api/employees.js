@@ -51,3 +51,20 @@ export function saveRoleInfo (data) {
     data
   })
 }
+
+// 读取用户详情的基础信息
+export function getPersonalDetail (id) {
+  return request({
+    method: 'GET',
+    url: `/employees/${id}/personalInfo`
+  })
+}
+
+// 更新用户详情的基础信息
+export function updatePersonal (data) {
+  return request({
+    method: 'PUT',
+    url: `/employees/${data.userId}/personalInfo`,
+    data
+  })
+}
