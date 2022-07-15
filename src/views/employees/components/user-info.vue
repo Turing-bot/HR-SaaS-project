@@ -6,7 +6,14 @@
         class="title"
         style="border-bottom: 2px solid #ccc; margin: 30px 0 20px"
       >
-        基础信息
+        <el-row type="flex" justify="end">
+          <el-col type="flex" justify="start">个人信息</el-col>
+          <el-tooltip content="打印个人详情信息">
+            <router-link :to="`/employees/print/${userId}?type=personal`">
+              <i class="el-icon-printer" />
+            </router-link>
+          </el-tooltip>
+        </el-row>
       </div>
       <!-- 工号 入职时间 -->
       <el-row class="inline-info">

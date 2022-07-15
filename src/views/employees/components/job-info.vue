@@ -7,7 +7,14 @@
           class="title"
           style="border-bottom: 2px solid #ccc; margin: 30px 0 20px"
         >
-          基础信息
+          <el-row type="flex" justify="end">
+            <el-col type="flex" justify="start">基础信息</el-col>
+            <el-tooltip content="打印岗位信息">
+              <router-link :to="`/employees/print/${userId}?type=job`">
+                <i class="el-icon-printer" />
+              </router-link>
+            </el-tooltip>
+          </el-row>
         </div>
         <el-form-item label="岗位">
           <el-input
