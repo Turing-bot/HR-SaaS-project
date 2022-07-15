@@ -85,3 +85,12 @@ export function updateJob (data) {
     data
   })
 }
+
+// 员工分配角色
+export function assignRole (data) {
+  return request({
+    method: 'PUT',
+    url: '/sys/user/assignRoles',
+    data
+  })
+}

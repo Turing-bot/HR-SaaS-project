@@ -88,7 +88,9 @@
               <el-button type="text" size="small">转正</el-button>
               <el-button type="text" size="small">调岗</el-button>
               <el-button type="text" size="small">离职</el-button>
-              <el-button type="text" size="small">角色</el-button>
+              <el-button type="text" size="small" @click="editRole(row.id)"
+                >角色</el-button
+              >
               <el-button type="text" size="small" @click="deleteRole(row.id)"
                 >删除</el-button
               >
@@ -112,20 +114,27 @@
         </el-row>
       </el-card>
       <AddEmployees :show-dialog.sync="showDialog" />
+      <AssignRole
+        ref="AssignRole"
+        :show-role-dialog.sync="showRoleDialog"
+        :user-id="userId"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import AddEmployees from './components/add-employees.vue'
-import { getEmployeeList, deleteRole } from '@/api/employees'
+import AssignRole from './components/assign-role.vue'
 import EmployeeEnum from '@/api/constant/employees'
+import { getEmployeeList, deleteRole } from '@/api/employees'
 import { formatDate } from '@/filters'
 
 export default {
   name: 'Employees',
   components: {
-    AddEmployees
+    AddEmployees,
+    AssignRole
   },
   data () {
     return {
@@ -136,7 +145,9 @@ export default {
       },
       list: [],
       loading: false,
-      showDialog: false
+      showDialog: false,
+      showRoleDialog: false,
+      userId: null
     }
   },
   created () {
@@ -167,6 +178,11 @@ export default {
       } catch (err) {
         console.log(err)
       }
+    },
+    async editRole (id) {
+      this.userId = id
+      this.$refs.AssignRole.getUserById(id)
+      this.showRoleDialog = true
     },
     // 导出excel数据
     exportData () {
