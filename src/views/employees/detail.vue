@@ -27,7 +27,9 @@
               </el-form-item>
             </el-form>
           </el-tab-pane>
-          <el-tab-pane label="个人详情" />
+          <el-tab-pane label="个人详情">
+            <component :is="UserComponent" />
+          </el-tab-pane>
           <el-tab-pane label="岗位信息" />
         </el-tabs>
       </el-card>
@@ -36,12 +38,17 @@
 </template>
 
 <script>
+import UserInfo from './components/user-info.vue'
 import { getUserById } from '@/api/user'
 import { saveRoleInfo } from '@/api/employees'
 
 export default {
+  components: {
+    UserInfo
+  },
   data () {
     return {
+      UserComponent: 'UserInfo',
       userId: this.$route.params.id,
       userInfo: {
         username: '',

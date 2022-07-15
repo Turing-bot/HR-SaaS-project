@@ -31,6 +31,7 @@
 </template>
 <script>
 import XLSX from 'xlsx'
+
 export default {
   props: {
     beforeUpload: Function, // eslint-disable-line
@@ -133,6 +134,7 @@ export default {
   }
 }
 </script>
+
 <style scoped lang="scss">
 .upload-excel {
   display: flex;
