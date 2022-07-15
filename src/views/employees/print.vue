@@ -335,6 +335,11 @@
           <div class="foot">签字：___________日期:___________</div>
         </div>
       </el-card>
+      <el-row type="flex" justify="end" style="margin-top: 10px">
+        <el-button v-print="printObj" size="small" type="primary"
+          >打印</el-button
+        >
+      </el-row>
     </div>
   </div>
 </template>
@@ -344,11 +349,15 @@ import { getPersonalDetail, getJobDetail } from '@/api/employees'
 import { getUserById } from '@/api/user'
 
 export default {
+
   data () {
     return {
       formData: {},
       userId: this.$route.params.id,
-      type: this.$route.query.type // 打印类型
+      type: this.$route.query.type, // 打印类型
+      printObj: {
+        id: 'myPrint'
+      }
     }
   },
   // 创建完毕状态

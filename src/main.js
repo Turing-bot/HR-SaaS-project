@@ -6,6 +6,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en' // lang i18n
 import Component from './components'
+import Print from 'vue-print-nb'
 
 import '@/styles/index.scss' // global css
 
@@ -34,6 +35,9 @@ Vue.use(ElementUI, { locale })
 
 // 注册通用栏组件
 Vue.use(Component)
+
+// 注册打印插件
+Vue.use(Print)
 
 Vue.config.productionTip = false
 
