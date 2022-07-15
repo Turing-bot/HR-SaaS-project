@@ -5,7 +5,7 @@
       <div class="block">
         <div
           class="title"
-          style="background-color: #409eff; margin-bottom: 20px"
+          style="border-bottom: 2px solid #ccc; margin: 30px 0 20px"
         >
           基础信息
         </div>
@@ -107,7 +107,7 @@
       <div class="block">
         <div
           class="title"
-          style="background-color: #409eff; margin-bottom: 20px"
+          style="border-bottom: 2px solid #ccc; margin-bottom: 20px"
         >
           合同信息
         </div>
@@ -168,7 +168,7 @@
       <div class="block">
         <div
           class="title"
-          style="background-color: #409eff; margin-bottom: 20px"
+          style="border-bottom: 2px solid #ccc; margin-bottom: 20px"
         >
           招聘信息
         </div>
@@ -229,6 +229,7 @@
 
 <script>
 import EmployeeEnum from '@/api/constant/employees'
+import { getEmployeeSimple, getJobDetail, updateJob } from '@/api/employees'
 
 export default {
   data () {
@@ -266,9 +267,22 @@ export default {
       }
     }
   },
+  created () {
+    this.getJobDetail()
+    this.getEmployeeSimple()
+  },
   methods: {
-    saveJob () {
-
+    async getJobDetail () {
+      this.formData = await getJobDetail(this.userId)
+    },
+    // 获取员工列表
+    async getEmployeeSimple () {
+      this.depts = await getEmployeeSimple()
+    },
+    // 保存岗位信息
+    async saveJob () {
+      await updateJob(this.formData)
+      this.$message.success('保存成功')
     }
   }
 }

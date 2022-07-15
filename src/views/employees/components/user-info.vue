@@ -2,6 +2,12 @@
   <div class="user-info">
     <!-- 个人信息 -->
     <el-form label-width="220px">
+      <div
+        class="title"
+        style="border-bottom: 2px solid #ccc; margin: 30px 0 20px"
+      >
+        基础信息
+      </div>
       <!-- 工号 入职时间 -->
       <el-row class="inline-info">
         <el-col :span="12">
@@ -74,9 +80,9 @@
       <div class="block">
         <div
           class="title"
-          style="background-color: #409eff; margin-bottom: 20px"
+          style="border-bottom: 2px solid #ccc; margin-bottom: 20px"
         >
-          基础信息
+          详细信息
         </div>
         <el-form-item label="最高学历">
           <el-select
@@ -222,7 +228,7 @@
       <div class="block">
         <div
           class="title"
-          style="background-color: #409eff; margin-bottom: 20px"
+          style="border-bottom: 2px solid #ccc; margin-bottom: 20px"
         >
           通讯信息
         </div>
@@ -278,7 +284,7 @@
       <div class="block">
         <div
           class="title"
-          style="background-color: #409eff; margin-bottom: 20px"
+          style="border-bottom: 2px solid #ccc; margin-bottom: 20px"
         >
           账号信息
         </div>
@@ -315,7 +321,7 @@
       <div class="block">
         <div
           class="title"
-          style="background-color: #409eff; margin-bottom: 20px"
+          style="border-bottom: 2px solid #ccc; margin-bottom: 20px"
         >
           教育信息
         </div>
@@ -366,7 +372,7 @@
       <div class="block">
         <div
           class="title"
-          style="background-color: #409eff; margin-bottom: 20px"
+          style="border-bottom: 2px solid #ccc; margin-bottom: 20px"
         >
           从业信息
         </div>
