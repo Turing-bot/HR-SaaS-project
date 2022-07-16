@@ -14,7 +14,11 @@
     >
       <i class="el-icon-plus" />
     </el-upload>
-    <el-progress v-if="showPercent" style="180px" :percentage="percent" />
+    <el-progress
+      v-if="showPercent"
+      style="width: 180px"
+      :percentage="percent"
+    />
     <el-dialog :visible.sync="showDialog" title="图片">
       <img :src="imgUrl" style="width: 100%" alt="" />
     </el-dialog>
@@ -103,7 +107,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .disabled .el-upload--picture-card {
   display: none;
 }

@@ -509,7 +509,6 @@ export default {
       const fileList = this.$refs.staffPhoto.fileList
       if (fileList.some(item => !item.upload)) {
         this.$message.warning('当前有图片未上传完成')
-
         return
       }
       await saveRoleInfo({
@@ -522,15 +521,7 @@ export default {
       this.formData = await getPersonalDetail(this.userId)
     },
     async savePersonal () {
-      const fileList = this.$refs.staffPhoto.fileList
-      if (fileList.some(item => !item.upload)) {
-        this.$message.warning('当前有图片未上传完成')
-        return
-      }
-      await updatePersonal({
-        ...this.formData, staffPhoto: fileList &&
-          fileList.length ? fileList[0].url : ''
-      })
+      await updatePersonal(this.formData)
       this.$message.success('保存成功')
     }
   }

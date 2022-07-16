@@ -33,6 +33,21 @@
             sortable=""
             prop="username"
           />
+          <el-table-column align="center" label="照片" prop="workNumber">
+            <template slot-scope="{ row }">
+              <img
+                v-imageerror="require('@/assets/common/bigUserHeader.png')"
+                :src="row.staffPhoto"
+                style="
+                  border-radius: 50%;
+                  width: 100px;
+                  height: 100px;
+                  padding: 10px;
+                "
+                alt=""
+              />
+            </template>
+          </el-table-column>
           <el-table-column
             align="center"
             label="工号"
