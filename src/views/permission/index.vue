@@ -1,7 +1,10 @@
 <template>
   <div class="dashboard-container">
     <div class="app-container">
-      <page-tools>
+      <page-tools :show-before="true">
+        <template v-slot:before>
+          <span>权限管理请谨慎操作</span>
+        </template>
         <template v-slot:after>
           <el-button type="primary" size="small" @click="addPermission(1, '0')"
             >添加权限</el-button

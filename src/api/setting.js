@@ -50,3 +50,12 @@ export function addRole (data) {
     data
   })
 }
+
+// 角色分配权限
+export function assignPerm (data) {
+  return request({
+    method: 'PUT',
+    url: '/sys/role/assignPrem',
+    data
+  })
+}
