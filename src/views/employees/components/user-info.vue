@@ -15,6 +15,14 @@
           </el-tooltip>
         </el-row>
       </div>
+      <el-row class="inline-info">
+        <el-col :span="12">
+          <el-form-item label="员工照片">
+            <!-- 放置上传图片 -->
+            <ImageUpload />
+          </el-form-item>
+        </el-col>
+      </el-row>
       <!-- 工号 入职时间 -->
       <el-row class="inline-info">
         <el-col :span="12">
@@ -66,14 +74,6 @@
           </el-form-item>
         </el-col>
       </el-row>
-      <!-- 员工照片 -->
-      <el-row class="inline-info">
-        <el-col :span="12">
-          <el-form-item label="员工头像">
-            <!-- 放置上传图片 -->
-          </el-form-item>
-        </el-col>
-      </el-row>
       <!-- 保存个人信息 -->
       <el-row class="inline-info" type="flex" justify="end">
         <el-col :span="12">
@@ -103,12 +103,6 @@
               :value="item.value"
             />
           </el-select>
-        </el-form-item>
-        <!-- 个人头像 -->
-        <!-- 员工照片 -->
-
-        <el-form-item label="员工照片">
-          <!-- 放置上传图片 -->
         </el-form-item>
         <el-form-item label="国家/地区">
           <el-select v-model="formData.nationalArea" class="inputW2">
