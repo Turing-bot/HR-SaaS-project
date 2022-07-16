@@ -19,7 +19,7 @@
         <el-col :span="12">
           <el-form-item label="员工照片">
             <!-- 放置上传图片 -->
-            <ImageUpload />
+            <ImageUpload ref="staffPhoto" />
           </el-form-item>
         </el-col>
       </el-row>
@@ -501,16 +501,36 @@ export default {
   methods: {
     async getUserById () {
       this.userInfo = await getUserById(this.userId)
+      if (this.userInfo.staffPhoto) {
+        this.$refs.staffPhoto.fileList = [{ url: this.userInfo.staffPhoto, upload: true }]
+      }
     },
     async saveUser () {
-      await saveRoleInfo(this.userInfo)
+      const fileList = this.$refs.staffPhoto.fileList
+      if (fileList.some(item => !item.upload)) {
+        this.$message.warning('当前有图片未上传完成')
+
+        return
+      }
+      await saveRoleInfo({
+        ...this.userInfo, staffPhoto: fileList &&
+          fileList.length ? fileList[0].url : ''
+      })
       this.$message.success('保存成功')
     },
     async getPersonalDetail () {
       this.formData = await getPersonalDetail(this.userId)
     },
     async savePersonal () {
-      await updatePersonal(this.formData)
+      const fileList = this.$refs.staffPhoto.fileList
+      if (fileList.some(item => !item.upload)) {
+        this.$message.warning('当前有图片未上传完成')
+        return
+      }
+      await updatePersonal({
+        ...this.formData, staffPhoto: fileList &&
+          fileList.length ? fileList[0].url : ''
+      })
       this.$message.success('保存成功')
     }
   }
