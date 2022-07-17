@@ -19,6 +19,7 @@ import '@/permission' // permission control
 
 import * as directives from '@/directives'
 import * as filters from '@/filters' // 引入工具类
+import checkPermission from '@/mixin/checkPermission'
 
 Object.keys(directives).forEach(key => {
   Vue.directive(key, directives[key])
@@ -38,6 +39,8 @@ Vue.use(Component)
 
 // 注册打印插件
 Vue.use(Print)
+
+Vue.mixin(checkPermission)
 
 Vue.config.productionTip = false
 
