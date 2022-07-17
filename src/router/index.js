@@ -80,6 +80,7 @@ export const constantRoutes = [
   { path: '*', redirect: '/404', hidden: true }
 ]
 
+// 动态路由
 export const dynamicRoutes = [
   attendancesRouter,
   approvalsRouter,

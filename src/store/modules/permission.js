@@ -1,4 +1,4 @@
-import { constantRoutes } from '@/router'
+import { constantRoutes, dynamicRoutes } from '@/router'
 
 const state = {
   routes: constantRoutes
@@ -8,7 +8,16 @@ const mutations = {
     state.routes = [...constantRoutes, ...newRoutes]
   }
 }
-const actions = {}
+const actions = {
+  filterRoutes (context, menus) {
+    const routes = []
+    menus.forEach(key => {
+      routes.push(...dynamicRoutes.filter(item => item.name === key))
+    })
+    context.commit('setRoutes', routes)
+    return routes
+  }
+}
 
 export default {
   namespace: true,
