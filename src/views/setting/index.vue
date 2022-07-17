@@ -167,10 +167,10 @@
       />
       <el-row slot="footer" type="flex" justify="center">
         <el-col :span="6">
+          <el-button size="small" @click="btnPermCancel">取消</el-button>
           <el-button type="primary" size="small" @click="btnPermOK"
             >确定</el-button
           >
-          <el-button size="small" @click="btnPermCancel">取消</el-button>
         </el-col>
       </el-row>
     </el-dialog>
