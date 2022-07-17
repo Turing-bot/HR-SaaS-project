@@ -44,7 +44,7 @@
                   height: 100px;
                   padding: 10px;
                 "
-                alt=""
+                @click="showQrCode(row.staffPhoto)"
               />
             </template>
           </el-table-column>
@@ -135,6 +135,11 @@
         :user-id="userId"
       />
     </div>
+    <el-dialog :visible.sync="showCodeDialog" title="头像">
+      <el-row type="flex" justify="center">
+        <canvas ref="myCanvas" />
+      </el-row>
+    </el-dialog>
   </div>
 </template>
 
@@ -144,6 +149,7 @@ import AssignRole from './components/assign-role.vue'
 import EmployeeEnum from '@/api/constant/employees'
 import { getEmployeeList, deleteRole } from '@/api/employees'
 import { formatDate } from '@/filters'
+import QrCode from 'qrcode'
 
 export default {
   name: 'Employees',
@@ -162,7 +168,8 @@ export default {
       loading: false,
       showDialog: false,
       showRoleDialog: false,
-      userId: null
+      userId: null,
+      showCodeDialog: false
     }
   },
   created () {
@@ -240,6 +247,16 @@ export default {
           return item[headers[key]]
         })
       })
+    },
+    showQrCode (url) {
+      if (url) {
+        this.showCodeDialog = true
+        this.$nextTick(() => {
+          QrCode.toCanvas(this.$refs.myCanvas, url)
+        })
+      } else {
+        this.$message.warning('用户还未上传照片')
+      }
     }
   }
 }
