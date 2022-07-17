@@ -38,6 +38,8 @@ import Layout from '@/layout'
  * a base page that does not have permission requirements
  * all roles can be accessed
  */
+
+// 默认静态路由
 export const constantRoutes = [
   {
     path: '/login',
