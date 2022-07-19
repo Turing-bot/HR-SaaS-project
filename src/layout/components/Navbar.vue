@@ -5,10 +5,9 @@
       class="hamburger-container"
       @toggleClick="toggleSideBar"
     />
-
     <breadcrumb class="breadcrumb-container" />
-
     <div class="right-menu">
+      <screen-full class="right-menu-item" />
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <img
@@ -159,6 +158,11 @@ export default {
           font-size: 12px;
         }
       }
+    }
+
+    .right-menu-item {
+      vertical-align: middle;
+      margin-right: 20px;
     }
   }
 }
