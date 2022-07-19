@@ -4,8 +4,17 @@
       <div class="topTit">
         <img src="@/assets/common/img.jpeg" alt="" />
         <div class="info">
-          <p class="name"><strong> {{ user.username }} </strong><span :class="dutyStatus">{{ dutyStatusTxt }}</span></p>
-          <p class="time">入职时间:  {{ user.timeOfEntry | formatDate }}   最新工资： {{ formLabelAlign.currentPostWage + formLabelAlign.currentBasicSalary }} <ul><span class="more">?</span><li>员工所有调薪后的基本工资、岗位工资合计</li></ul></p>
+          <p class="name">
+            <strong> {{ user.username }} </strong>
+            <span :class="dutyStatus">{{ dutyStatusTxt }}</span>
+          </p>
+          <p class="time">
+            入职时间:  {{ user.timeOfEntry | formatDate }}   最新工资： {{ formLabelAlign.currentPostWage + formLabelAlign.currentBasicSalary }}
+            <ul>
+              <span class="more">?</span>
+              <li>员工所有调薪后的基本工资、岗位工资合计</li>
+            </ul>
+          </p>
           <p>当月基本工资 / 当月岗位工资: {{ formLabelAlign.currentBasicSalary }} / {{ formLabelAlign.currentPostWage }}</p>
         </div>
       </div>
@@ -13,18 +22,56 @@
         <div class="social">
           <div class="title"> <strong>津贴</strong></div>
           <div class="table">
-            <div class="tabTit"><div>津贴类型</div><div> 补贴金额 </div><div>津贴类型</div><div> 补贴金额 </div></div>
-            <div class="tabRow"><div>交通补助</div><div> {{ paymentData.p2 }} </div><div>通讯补助</div><div> {{ paymentData.p3 }} </div></div>
-            <div class="tabRow"><div>午餐补助</div><div> {{ paymentData.p4 }} </div><div>住房补助</div><div> {{ paymentData.p1 }} </div></div>
+            <div class="tabTit">
+              <div>津贴类型</div>
+              <div> 补贴金额 </div>
+              <div>津贴类型</div>
+              <div> 补贴金额 </div>
+            </div>
+            <div class="tabRow">
+              <div>交通补助</div>
+              <div> {{ paymentData.p2 }} </div>
+              <div>通讯补助</div>
+              <div> {{ paymentData.p3 }} </div>
+            </div>
+            <div class="tabRow">
+              <div>午餐补助</div>
+              <div> {{ paymentData.p4 }} </div>
+              <div>住房补助</div>
+              <div> {{ paymentData.p1 }} </div>
+            </div>
           </div>
         </div>
         <div class="fund">
-          <div class="title"> <strong>社保公积金</strong> <span>企业 {{ socialData.socialSecurityEnterprise + socialData.providentFundEnterprises }}</span> <span>个人 {{ socialData.socialSecurityIndividual + socialData.providentFundIndividual }}</span></div>
+          <div class="title">
+            <strong>社保公积金</strong>
+            <span>企业 {{ socialData.socialSecurityEnterprise + socialData.providentFundEnterprises }}</span>
+            <span>个人 {{ socialData.socialSecurityIndividual + socialData.providentFundIndividual }}</span>
+          </div>
           <div class="table">
-            <div class="tabTit"><div>缴费项目</div><div>基数</div><div> 企业缴纳 </div><div>个人缴纳</div></div>
-            <div class="tabRow"><div>社保</div><div> {{ socialData.socialSecurityBase }} </div><div>{{ socialData.socialSecurityEnterprise }}</div><div> {{ socialData.socialSecurityIndividual }} </div></div>
-            <div class="tabRow"><div>公积金</div><div> {{ socialData.providentFundBase }} </div><div>{{ socialData.providentFundEnterprises }}</div><div> {{ socialData.providentFundIndividual }} </div></div>
-            <div class="tabRow"><div>缴费合计</div><div /><div>{{ socialData.socialSecurityEnterprise + socialData.providentFundEnterprises }}</div><div> {{ socialData.socialSecurityIndividual + socialData.providentFundIndividual }} </div></div>
+            <div class="tabTit">
+              <div>缴费项目</div>
+              <div>基数</div>
+              <div> 企业缴纳 </div>
+              <div>个人缴纳</div>
+            </div>
+            <div class="tabRow">
+              <div>社保</div>
+              <div> {{ socialData.socialSecurityBase }} </div>
+              <div>{{ socialData.socialSecurityEnterprise }}</div>
+              <div> {{ socialData.socialSecurityIndividual }} </div>
+            </div>
+            <div class="tabRow">
+              <div>公积金</div>
+              <div> {{ socialData.providentFundBase }} </div>
+              <div>{{ socialData.providentFundEnterprises }}</div>
+              <div> {{ socialData.providentFundIndividual }} </div>
+            </div>
+            <div class="tabRow">
+              <div>缴费合计</div>
+              <div>{{ socialData.socialSecurityEnterprise + socialData.providentFundEnterprises }}</div>
+              <div> {{ socialData.socialSecurityIndividual + socialData.providentFundIndividual }} </div>
+            </div>
           </div>
         </div>
         <div class="formTable">
@@ -40,10 +87,28 @@
       </div>
     </div>
     <div class="contRit">
-      <div class="topTit"><strong>招聘日程</strong></div>
+      <div class="topTit">
+        <strong>招聘日程</strong>
+      </div>
       <div class="Items">
-        <li><div class="name"><p>HR专员</p><p>2018-12-3 3:30</p></div><div class="act"> <strong>放弃</strong> </div></li>
-        <li><div class="name"><p>HR专员</p><p>2018-12-3 3:30</p></div><div class="act"> <strong>放弃</strong> </div></li>
+        <li>
+          <div class="name">
+            <p>HR专员</p>
+            <p>2018-12-3 3:30</p>
+          </div>
+          <div class="act">
+            <strong>放弃</strong>
+          </div>
+        </li>
+        <li>
+          <div class="name">
+            <p>HR专员</p>
+            <p>2018-12-3 3:30</p>
+          </div>
+          <div class="act">
+            <strong>放弃</strong>
+          </div>
+        </li>
       </div>
     </div>
   </div>
