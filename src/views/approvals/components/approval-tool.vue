@@ -30,6 +30,7 @@
 <script>
 import { exportApprovals } from '@/api/approvals'
 import process from './process'
+
 export default {
   name: 'ApprovalPageTool',
   components: {

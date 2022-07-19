@@ -110,6 +110,7 @@
 <script>
 import { startProcess } from '@/api/approvals'
 import commonApi from '@/api/constant/user'
+
 export default {
   name: 'UsersTableIndex',
   props: ['dialogVisible'],

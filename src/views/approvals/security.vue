@@ -66,13 +66,10 @@
 </template>
 
 <script>
-import {
-  saveSetState,
-  getFlowList,
-  suspend
-} from '@/api/approvals'
+import { saveSetState, getFlowList, suspend } from '@/api/approvals'
 import { importFilexml } from '@/filters'
 import { getToken } from '@/utils/auth'
+
 export default {
   name: 'UsersTableIndex',
   components: {},

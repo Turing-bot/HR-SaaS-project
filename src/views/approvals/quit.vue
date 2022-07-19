@@ -56,6 +56,7 @@
 
 <script>
 import { getApprovalsDetail, getApprovalsTaskDetail, downImg } from '@/api/approvals'
+
 export default {
   name: 'UsersTableIndex',
 

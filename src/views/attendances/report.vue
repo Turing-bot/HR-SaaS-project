@@ -22,6 +22,7 @@
 <script>
 import { fileUpdate } from '@/api/attendances'
 import allList from './components/refort-list'
+
 export default {
   name: 'RefortList',
   components: { allList },

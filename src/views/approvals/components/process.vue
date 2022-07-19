@@ -75,6 +75,7 @@
 import { getEmploySimple } from '@/api/employees'
 import { process } from '@/api/approvals'
 import commonApi from '@/api/constant/approvals'
+
 export default {
   name: 'Setting',
   props: ['setData'],

@@ -97,13 +97,8 @@
 </template>
 
 <script>
-import {
-  getApprovalsDetail,
-  approvalsDel,
-  approvalsPass,
-  approvalsReject,
-  applyOvertime
-} from '@/api/approvals'
+import { getApprovalsDetail, approvalsDel, approvalsPass, approvalsReject, applyOvertime } from '@/api/approvals'
+
 export default {
   name: 'Overtime',
   props: {

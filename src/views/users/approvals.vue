@@ -195,18 +195,13 @@
 </template>
 
 <script>
-import {
-  getApprovalList,
-  approvalsDel,
-  approvalsPass,
-  approvalsReject,
-  getFlowList
-} from '@/api/approvals'
+import { getApprovalList, approvalsDel, approvalsPass, approvalsReject, getFlowList } from '@/api/approvals'
 import baseApi from '@/api/constant/approvals'
 import Quit from './components/quit'
 import Leave from './components/leave-job'
 import Overtime from './components/overtime'
 import { mapGetters } from 'vuex'
+
 export default {
   name: 'UsersTableIndex',
   components: {

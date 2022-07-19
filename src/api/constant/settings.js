@@ -148,7 +148,7 @@ export default {
     value: '员工'
   },
   {
-    id: 'salarys',
+    id: 'salary',
     value: '工资'
   },
   {

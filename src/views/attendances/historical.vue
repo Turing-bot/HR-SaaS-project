@@ -136,10 +136,8 @@
 
 <script>
 import { getDepartments } from '@/api/departments'
-import {
-  getArchivingList,
-  getArchivingCont
-} from '@/api/attendances'
+import { getArchivingList, getArchivingCont } from '@/api/attendances'
+
 export default {
   name: 'HistoricalArchiving',
   components: {
@@ -269,6 +267,7 @@ export default {
   }
 }
 </script>
+
 <style rel="stylesheet/scss" lang="scss" scoped>
 @import './../../styles/variables.scss';
 

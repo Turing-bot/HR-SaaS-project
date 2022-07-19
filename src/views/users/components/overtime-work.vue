@@ -107,7 +107,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'UsersTableIndex',
   data () {

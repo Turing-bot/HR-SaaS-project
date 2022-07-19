@@ -36,7 +36,7 @@ const actions = {
     const baseInfo = await getUserById(result.userId)
     const baseResult = { ...result, ...baseInfo }
     context.commit('setUserInfo', baseResult)
-    return baseResult
+    return result
   },
   logout (context) {
     context.commit('removeToken')

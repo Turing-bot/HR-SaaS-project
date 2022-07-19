@@ -358,6 +358,7 @@
 
 <script>
 import { getArchivingList, getArchivingCont } from '@/api/social'
+
 export default {
   name: 'HistoricalArchiving',
   data () {

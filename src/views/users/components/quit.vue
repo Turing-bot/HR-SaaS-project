@@ -86,13 +86,8 @@
 </template>
 
 <script>
-import {
-  getApprovalsDetail,
-  approvalsDel,
-  approvalsPass,
-  approvalsReject,
-  applyDimission
-} from '@/api/approvals'
+import { getApprovalsDetail, approvalsDel, approvalsPass, approvalsReject, applyDimission } from '@/api/approvals'
+
 export default {
   name: 'UsersTableIndex',
   props: {
