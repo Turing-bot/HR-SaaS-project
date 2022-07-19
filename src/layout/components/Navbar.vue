@@ -7,6 +7,7 @@
     />
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <theme-picker class="right-menu-item" />
       <screen-full class="right-menu-item" />
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -162,7 +163,7 @@ export default {
 
     .right-menu-item {
       vertical-align: middle;
-      margin-right: 20px;
+      margin-right: 10px;
     }
   }
 }
