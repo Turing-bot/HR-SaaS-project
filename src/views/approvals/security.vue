@@ -67,7 +67,7 @@
 
 <script>
 import { saveSetState, getFlowList, suspend } from '@/api/approvals'
-import { importFilexml } from '@/filters'
+import { importFile } from '@/filters'
 import { getToken } from '@/utils/auth'
 
 export default {
@@ -144,7 +144,7 @@ export default {
       this.$message.error(obj)
     },
     beforeUpload (file, obj) {
-      importFilexml(file, obj, this.typeTip)
+      importFile(file, obj, this.typeTip)
     },
     // 上传错误
     uploadFail (err, file, fileList) {

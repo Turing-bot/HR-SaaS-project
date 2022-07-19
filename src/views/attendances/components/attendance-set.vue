@@ -439,7 +439,7 @@
 </template>
 
 <script>
-import { addEmployee } from '@/api/employees'
+import { addRole } from '@/api/employees'
 import { getInteger, getIntegerPoint } from '@/filters'
 import { getDepartmentsData } from '@/api/departments'
 import {
@@ -561,7 +561,7 @@ export default {
       this.formBase.formOfEmployment = this.formOfEmployment
       this.$refs.dataForm.validate(async valid => {
         if (valid) {
-          await addEmployee(this.formBase)
+          await addRole(this.formBase)
           this.$emit('clearFormDate', this.formBase)
           this.formBase = {}
           this.$emit('doQuery', this.requestParameters)
@@ -715,7 +715,7 @@ export default {
       this.$refs.overtimeForm.validate(async valid => {
         if (valid) {
           var deductionList = this.overtimeBase
-          deductionList.latestEffectDate = commonApi.tranListToTreeData(
+          deductionList.latestEffectDate = commonApi.convertTreeData(
             deductionList.latestEffectDate
           )
           if (deductionList.isClock === true) {

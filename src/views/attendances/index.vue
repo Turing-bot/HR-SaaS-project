@@ -153,8 +153,8 @@
             </p>
           </div>
           <span slot="footer" class="dialog-footer">
-            <el-button type="primary" @click="btnOK">确定</el-button>
             <el-button @click="centerDialogVisible = false">取消</el-button>
+            <el-button type="primary" @click="btnOK">确定</el-button>
           </span>
         </el-dialog>
         <!-- 分页组件 -->
@@ -189,8 +189,8 @@
           </p>
         </div>
         <span slot="footer" class="dialog-footer">
-          <el-button type="primary" @click="handleSub">我知道了</el-button>
           <el-button @click="centerDialogVisible = false">取消</el-button>
+          <el-button type="primary" @click="handleSub">我知道了</el-button>
         </span>
       </el-dialog>
       <!-- 设置组件 -->

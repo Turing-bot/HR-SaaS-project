@@ -40,6 +40,7 @@ Vue.use(Component)
 // 注册打印插件
 Vue.use(Print)
 
+// 所有组件注册检查方法
 Vue.mixin(checkPermission)
 
 Vue.config.productionTip = false

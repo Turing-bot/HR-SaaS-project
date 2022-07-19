@@ -1,6 +1,6 @@
 <template>
-  <div id="myPrint" class="dashboard-container">
-    <div class="app-container">
+  <div class="dashboard-container">
+    <div id="myPrint" class="app-container">
       <el-card>
         <el-breadcrumb separator="/" class="titInfo">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -335,12 +335,10 @@
           <div class="foot">签字：___________日期:___________</div>
         </div>
       </el-card>
-      <el-row type="flex" justify="end" style="margin-top: 10px">
-        <el-button v-print="printObj" size="small" type="primary"
-          >打印</el-button
-        >
-      </el-row>
     </div>
+    <el-row type="flex" justify="end" style="margin-top: 10px">
+      <el-button v-print="printObj" size="small" type="primary">打印</el-button>
+    </el-row>
   </div>
 </template>
 
