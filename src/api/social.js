@@ -13,6 +13,7 @@ export function getArchivingList (data) {
     data
   })
 }
+
 export function newReport (data) {
   return request({
     url: `/social_securitys/historys/${data.yearMonth}/newReport`,
@@ -20,24 +21,28 @@ export function newReport (data) {
     data
   })
 }
+
 export function getHistorysData (data) {
   return request({
     url: `/social_securitys/historys/archiveDetail/${data.userId}/${data.yearMonth}`,
     data
   })
 }
+
 export function getArchivingExport (data) {
   return request({
     url: `/social_securitys/historys/${data.yearMonth}/export`,
     data
   })
 }
+
 export function getArchivingFirst (data) {
   return request({
     url: `/social_securitys/historys/${data.yearMonth}/first`,
     data
   })
 }
+
 export function getSocialList (data) {
   return request({
     url: '/social_securitys/list',
@@ -45,6 +50,7 @@ export function getSocialList (data) {
     data
   })
 }
+
 export function getArchivingArchive (data) {
   return request({
     url: `/social_securitys/historys/${data.yearMonth}/archive`,
@@ -58,6 +64,7 @@ export function getTips (yearMonth) {
     url: `/social_securitys/tips/${yearMonth}`
   })
 }
+
 export function saveContent (data) {
   return request({
     url: `/social_securitys/${data.userId}`,
@@ -65,21 +72,25 @@ export function saveContent (data) {
     data
   })
 }
+
 export function getContent (userId) {
   return request({
     url: `/social_securitys/${userId}`
   })
 }
+
 export function getPaymentItemList (id) {
   return request({
     url: `/social_securitys/payment_item/${id}`
   })
 }
+
 export function getSettings () {
   return request({
     url: '/social_securitys/settings'
   })
 }
+
 export function saveSettings (data) {
   return request({
     url: '/social_securitys/settings',

@@ -258,6 +258,7 @@ export default {
   }
 }
 </script>
+
 <style rel="stylesheet/scss" lang="scss">
 .el-message-box--center .el-message-box__content p {
   text-align: left;

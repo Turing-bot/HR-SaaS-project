@@ -33,7 +33,6 @@ export default {
       showHeight: 40
     }
   },
-
   methods: {
     // 业务方法
     // 归档报表

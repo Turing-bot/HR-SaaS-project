@@ -62,7 +62,6 @@
             <el-table-column prop="username" label="姓名" width="150px" />
             <el-table-column
               prop="timeOfEntry"
-              :formatter="transformDateFormat"
               label="入职时间"
               width="150px"
             />

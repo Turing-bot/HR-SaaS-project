@@ -203,7 +203,7 @@
 import attendanceApi from '@/api/constant/attendance'
 import { getAttendancesList, updateAttendance } from '@/api/attendances'
 import AttendanceSet from './components/attendance-set'
-import { getDepartments } from '@/api/departments'
+import { getDepartmentsData } from '@/api/departments'
 
 export default {
   name: 'Attendances',
@@ -273,7 +273,7 @@ export default {
     },
     // 获取组织列表
     async getDepartments () {
-      const { depts } = await getDepartments()
+      const { depts } = await getDepartmentsData()
       this.departments = depts
     },
 

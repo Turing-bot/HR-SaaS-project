@@ -28,12 +28,7 @@
         >
           <el-table-column type="index" label="序号" center width="50" />
           <el-table-column prop="username" label="姓名" width="150px" />
-          <el-table-column
-            prop="timeOfEntry"
-            label="入职时间"
-            :formatter="transformDateFormat"
-            width="150px"
-          />
+          <el-table-column prop="timeOfEntry" label="入职时间" />
           <el-table-column prop="mobile" label="手机号" width="150px" />
           <el-table-column prop="idNumber" label="身份证号码" width="150px" />
           <el-table-column
@@ -354,7 +349,7 @@ export default {
         await getArchivingArchive({ yearMonth: this.yearVal })
         this.$message({
           type: 'success',
-          message: '确定!'
+          message: '归档成功!'
         })
       })
     },

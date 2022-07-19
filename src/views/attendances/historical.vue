@@ -135,7 +135,7 @@
 </template>
 
 <script>
-import { getDepartments } from '@/api/departments'
+import { getDepartmentsData } from '@/api/departments'
 import { getArchivingList, getArchivingCont } from '@/api/attendances'
 
 export default {
@@ -229,7 +229,7 @@ export default {
     },
     // 部门
     async getDepartments () {
-      const { depts } = await getDepartments()
+      const { depts } = await getDepartmentsData()
       this.departmentData = depts
       this.requestParameters.departmentId = depts[0].id
       this.getArchivingList(this.requestParameters)

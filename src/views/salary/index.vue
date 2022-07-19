@@ -151,6 +151,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { getSalarysList, getTips, getSalaryDetail, getCompanySetting } from '@/api/salary'
 import EmployeeData from '@/api/constant/employees'
@@ -188,7 +189,6 @@ export default {
       selectedSalaryInfo: {},
       selectUserId: null,
       currentComponent: ''
-
     }
   },
   computed: {
