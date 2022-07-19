@@ -43,6 +43,7 @@ const actions = {
     context.commit('removeUserInfo')
     resetRouter()
     context.commit('permission/setRoutes', [], { root: true })
+    context.dispatch('tagsView/delAllViews', null, { root: true })
   }
 }
 
