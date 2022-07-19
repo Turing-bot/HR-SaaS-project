@@ -101,13 +101,13 @@
     </div>
     <el-row type="flex" justify="center" align="middle" style="height: 60px">
       <el-col :span="12">
+        <el-button size="small" @click="$router.back()">取消</el-button>
         <el-button size="small" type="primary" @click="archivingReportForm"
           >归档{{ yearMonth ? yearMonth.substr(4) : '' }}报表</el-button
         >
         <el-button size="small" type="primary" @click="createReportForm"
           >新建报表</el-button
         >
-        <el-button size="small" @click="$router.back()">取消</el-button>
       </el-col>
     </el-row>
   </div>

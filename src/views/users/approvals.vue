@@ -328,8 +328,8 @@ export default {
     },
     clickBack (id) {
       this.$confirm('是否驳回', '确认', {
-        confirmButtonText: '确定',
         cancelButtonText: '取消',
+        confirmButtonText: '确定',
         type: 'warning',
         center: true
       })

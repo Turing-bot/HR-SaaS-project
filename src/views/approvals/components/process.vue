@@ -64,8 +64,8 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="saveBtn">保存</el-button>
         <el-button @click="dialogFormVisible = false">取消</el-button>
+        <el-button type="primary" @click="saveBtn">保存</el-button>
       </div>
     </el-dialog>
   </div>

@@ -74,10 +74,10 @@
             </el-form-item>
           </el-form>
           <div class="el-dialog__footer dialog-footer">
+            <el-button @click="handleClose">取消</el-button>
             <el-button type="primary" @click="handleAttendance"
               >保存更新</el-button
             >
-            <el-button @click="handleClose">取消</el-button>
           </div>
         </el-tab-pane>
         <el-tab-pane label="请假设置" name="second">
@@ -122,8 +122,8 @@
             </el-table-column>
           </el-table>
           <div class="el-dialog__footer dialog-footer">
-            <el-button type="primary" @click="handleLeave">保存更新</el-button>
             <el-button @click="handleClose">取消</el-button>
+            <el-button type="primary" @click="handleLeave">保存更新</el-button>
           </div>
           <el-alert type="warning" show-icon :closable="false" title>
             <template>
@@ -323,10 +323,10 @@
             </el-table-column>
           </el-table>
           <div class="el-dialog__footer dialog-footer">
+            <el-button @click="handleClose">取消</el-button>
             <el-button type="primary" @click="handleDeductions"
               >保存更新</el-button
             >
-            <el-button @click="handleClose">取消</el-button>
           </div>
         </el-tab-pane>
         <el-tab-pane label="加班设置" name="fourth">
@@ -427,10 +427,10 @@
             </el-form-item>
           </el-form>
           <div class="el-dialog__footer dialog-footer">
+            <el-button @click="handleClose">取消</el-button>
             <el-button type="primary" @click="handleOvertime"
               >保存更新</el-button
             >
-            <el-button @click="handleClose">取消</el-button>
           </div>
         </el-tab-pane>
       </el-tabs>

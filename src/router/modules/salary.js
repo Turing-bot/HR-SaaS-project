@@ -8,7 +8,7 @@ const salaryRouter = {
     {
       path: '',
       component: () => import('@/views/salary'),
-      name: 'salary',
+      name: 'salarys',
       meta: {
         title: '工资',
         icon: 'star'

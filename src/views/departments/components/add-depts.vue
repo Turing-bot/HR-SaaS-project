@@ -52,8 +52,8 @@
     <el-row slot="footer" type="flex" justify="center">
       <!-- 列被分为24 -->
       <el-col :span="6">
-        <el-button type="primary" size="small" @click="btnOk"> 确定 </el-button>
         <el-button size="small" @click="btnCancel"> 取消 </el-button>
+        <el-button type="primary" size="small" @click="btnOk"> 确定 </el-button>
       </el-col>
     </el-row>
   </el-dialog>

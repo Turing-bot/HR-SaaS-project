@@ -7,6 +7,7 @@
     />
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <select-lang class="right-menu-item" />
       <theme-picker class="right-menu-item" />
       <screen-full class="right-menu-item" />
       <el-dropdown class="avatar-container" trigger="click">
