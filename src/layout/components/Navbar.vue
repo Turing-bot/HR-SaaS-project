@@ -21,8 +21,8 @@
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
-          <router-link to="/">
-            <el-dropdown-item> 首页 </el-dropdown-item>
+          <router-link to="/users/info">
+            <el-dropdown-item> 个人信息 </el-dropdown-item>
           </router-link>
           <a
             target="_blank"
