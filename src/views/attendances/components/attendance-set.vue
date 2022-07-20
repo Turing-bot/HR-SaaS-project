@@ -236,7 +236,7 @@
                       <el-input
                         v-model="scope.row.absenceDays"
                         class="inputInfo"
-                        @input.native="handleInputPoint($event)"
+                        @input.native="$event"
                       />天
                     </p>
                   </div>
@@ -301,7 +301,7 @@
                       <el-input
                         v-model="scope.row.absenceDays"
                         class="inputInfo"
-                        @input.native="handleInputPoint($event)"
+                        @input.native="$event"
                       />天
                     </p>
                   </div>
@@ -440,7 +440,6 @@
 
 <script>
 import { addRole } from '@/api/employees'
-import { getInteger, getIntegerPoint } from '@/filters'
 import { getDepartmentsData } from '@/api/departments'
 import {
   attendanceSave,
@@ -771,13 +770,13 @@ export default {
       this.$message.error(obj)
     },
     // 验证输入正整数
-    handleInput: function (e) {
-      getInteger(e, this.typeTip)
-    },
+    // handleInput: function (e) {
+    //   getInteger(e, this.typeTip)
+    // },
     // 获取小数点后1位
-    handleInputPoint (e) {
-      getIntegerPoint(e)
-    },
+    // handleInputPoint (e) {
+    //   getIntegerPoint(e)
+    // },
     //
     handleStatus (e, obj) {
       obj.departmentId = this.deductionsBase.departmentId
