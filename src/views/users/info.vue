@@ -7,7 +7,7 @@
     </div>
     <div class="myInfoCont">
       <div class="myInfoPic">
-        <img src="@/assets/common/img.jpeg" width="100" alt />
+        <img src="@/assets/common/bigUserHeader.png" width="100" alt />
       </div>
       <div>
         <el-form ref="myInfo" :model="myInfo" label-width="80px">
