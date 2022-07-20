@@ -9,18 +9,26 @@
     />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title><%= webpackConfig.name %></title>
-    <style>
+    <!-- 引入样式 -->
+    <% for(var css of htmlWebpackPlugin.options.cdn.css) { %>
+    <link rel="stylesheet" href="<%=css%>" />
+    <% } %>
+    <!-- <style>
       canvas#live2dcanvas {
         border: 0 !important;
       }
-    </style>
+    </style> -->
   </head>
 
   <body>
-    <script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js"></script>
+    <!-- 引入JS -->
+    <% for(var js of htmlWebpackPlugin.options.cdn.js) { %>
+    <script src="<%=js%>"></script>
+    <% } %>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js"></script>
     <script>
       L2Dwidget.init();
-    </script>
+    </script> -->
     <noscript>
       <strong
         >We're sorry but <%= webpackConfig.name %> doesn't work properly without

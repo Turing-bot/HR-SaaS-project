@@ -30,7 +30,7 @@
           <WorkCalendar />
         </el-card>
         <el-card class="box-card">
-          <div class="header headTit">
+          <div slot="header" class="header headTit">
             <span>流程申请</span>
           </div>
           <div class="sideNav">
@@ -52,30 +52,20 @@
       <el-col :span="11">
         <!-- 帮助连接 -->
         <el-card class="box-card">
-          <div class="header headTit">
-            <span>帮助链接</span>
+          <div slot="header" class="header headTit">
+            <span>流程进度</span>
           </div>
-          <div class="sideLink">
-            <el-row>
-              <el-col :span="8">
-                <a href="#">
-                  <span class="icon iconGuide" />
-                  <p>入门指南</p>
-                </a>
-              </el-col>
-              <el-col :span="8">
-                <a href="#">
-                  <span class="icon iconHelp" />
-                  <p>在线帮助手册</p>
-                </a>
-              </el-col>
-              <el-col :span="8">
-                <a href="#">
-                  <span class="icon iconTechnology" />
-                  <p>联系技术支持</p>
-                </a>
-              </el-col>
-            </el-row>
+          <div>
+            <el-steps
+              :space="200"
+              :active="1"
+              finish-status="success"
+              align-center
+            >
+              <el-step title="已完成" />
+              <el-step title="进行中" />
+              <el-step title="步骤 3" />
+            </el-steps>
           </div>
         </el-card>
         <!-- 绩效指数 -->

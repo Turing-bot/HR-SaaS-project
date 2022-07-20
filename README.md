@@ -1,1 +1,3 @@
-<img src="./src/assets/common/wallhaven-m9eo2m_3840x2160.png" alt="">
+### Dashboard
+
+<img src="./src/assets/common/dashboard.png" alt="">
