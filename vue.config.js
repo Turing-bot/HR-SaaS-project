@@ -23,14 +23,10 @@ if (isProd) {
   // 只有生产环境下 才做 排除打包 并且注入cdn文件
   cdn = {
     css: [
-      // element-ui css
-      'https://unpkg.com/element-ui/lib/theme-chalk/index.css' // 样式表
+      'https://unpkg.com/element-ui/lib/theme-chalk/index.css' // element-ui css
     ],
     js: [
-      // vue must at first!  视频中的链接失效了，用下面的替代即可。
-      // "https://unpkg.com/vue/dist/vue.js", // vuejs
       'https://unpkg.com/vue@2.6.14/dist/vue.js', // vuejs
-      // element-ui js
       'https://unpkg.com/element-ui/lib/index.js', // elementUI
       'https://cdn.jsdelivr.net/npm/xlsx@0.16.6/dist/jszip.min.js',
       'https://cdn.jsdelivr.net/npm/xlsx@0.16.6/dist/xlsx.full.min.js'
