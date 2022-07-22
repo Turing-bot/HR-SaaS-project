@@ -13,7 +13,11 @@
           <el-button size="small" type="danger" @click="exportData"
             >导出</el-button
           >
-          <el-button size="small" type="primary" @click="showDialog = true"
+          <el-button
+            size="small"
+            type="primary"
+            :disabled="!checkPermission('POINT_USER_ADD')"
+            @click="showDialog = true"
             >新增员工</el-button
           >
         </template>
@@ -97,6 +101,7 @@
               <el-button
                 type="text"
                 size="small"
+                :disabled="!checkPermission('POINT_USER_READ')"
                 @click="$router.push(`/employees/detail/${row.id}`)"
                 >查看</el-button
               >
@@ -106,7 +111,11 @@
               <el-button type="text" size="small" @click="editRole(row.id)"
                 >角色</el-button
               >
-              <el-button type="text" size="small" @click="deleteRole(row.id)"
+              <el-button
+                type="text"
+                size="small"
+                :disabled="!checkPermission('POINT_USER_DELETE')"
+                @click="deleteRole(row.id)"
                 >删除</el-button
               >
             </template>
